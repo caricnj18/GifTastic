@@ -1,0 +1,31 @@
+/*style sheet for wk 06*/
+
+
+
+* { 
+    box-sizing: border-box;
+}
+
+/*the entire page*/ 
+.container{
+width: 25%;
+text-align: center;
+float: right;
+border: 1px solid lightgrey;
+}
+
+/*title*/
+.panel-body{
+float:right;
+}
+
+/*search bar*/
+.input-group{
+float:right;
+}
+
+
+/*button class*/
+#startButton{
+    float: right;
+}
