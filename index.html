@@ -4,49 +4,57 @@
 
 <html>
 
-        <head>
-                <meta charset="UTF-8">
-            <title>GifTastic</title>
-            <link rel="stylesheet" href="assets/css/reset.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <link rel="stylesheet" href="assets/css/style.css">
-            
-        </head>
-        
-        
-        <body>
-          
-            <!--title to direct user to input animal type-->
-            <div class = "container">
-                <div class="panel panel-default">
-                        <div class="panel-body">
-                          <h4><strong>Add an animal</strong></h4>
-                        </div>
-                </div>
-        
+<head>
+    <meta charset="UTF-8">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-                <!--search bar-->
-                <div class="input-group">
-                        <input type="text" class="form-control" placeholder="animal">
-                      </div>
+</head>
 
 
-                <!-- Single button -->
-                <div class="panel panel-default"> 
-                        <div id ="startButton">
-                            <div class="panel-body">
-                              <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-                         </div>
-                      </div>
+<body>
+
+	<header>
+		<div class="jumbotron" id="header">
+			<img id="topImageL" src="assets/images/netflixLogo.gif">
+		</div>
+	</header>
+
+    <!--title to direct user to input animal type-->
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>
+                    <strong>Pick your favorite Netflix show</strong>
+                </h4>
+            </div>
+        </div>
+
+
+        <!--search bar-->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="show name">
+ 
+
+        <!-- Single button -->
+        <div class="panel panel-default">
+            <div id="startButton">
+                <div class="panel-body">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
                 </div>
             </div>
+        </div>
+    </div>
+ </div>
 
+ 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-            <!-- jQuery -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            
-            <!-- Script -->
-            <script src="assets/javascript/app.js"></script>
-        </body>
-        
-        </html>
+    <!-- Script -->
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>

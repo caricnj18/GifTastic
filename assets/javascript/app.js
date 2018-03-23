@@ -1,12 +1,17 @@
+
+//global variable
+
+var topics = [Jessica Jones, Luke Cage, Stranger Things];
+
 //event listener for all button elements
-$("button").on("click", function() {
+$("#startButton").on("click", function() {
 
     //in this case, the "this" keyword refers to the button that was clicked
-    var person = $(this).attr("startButton");
+    var netflixShows = $(this).attr("#startButton");
 
     //constructing a URL to search Giphy of the name of the person who 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-      person + "&api_key=dc6zaTOxFJmzC&limit=10";
+      netflixShows + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     //performing our AJAX GET request
     $.ajax({
@@ -28,11 +33,11 @@ $("button").on("click", function() {
 
           var p = $("<p>").text("Rating: " + rating);
 
-          var personImage = $("<img>");
-          personImage.attr("src", results[i].images.fixed_height.url);
+          var netflixShowsImage = $("<img>");
+          netflixShowsImage.attr("src", results[i].images.fixed_height.url);
 
           gifDiv.prepend(p);
-          gifDiv.prepend(personImage);
+          gifDiv.prepend(netflixShowsImage);
 
           $("#gifs-appear-here").prepend(gifDiv);
         }
