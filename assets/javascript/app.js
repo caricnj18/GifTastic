@@ -1,45 +1,63 @@
+$(function(){
+  populateButtons(searchArray, "searchButton", "#buttonArea");
+  console.log("Page Loaded");
+})
 
-//global variable
+var searchArray = ['Jessica Jones', 'Stranger Things', 'Luke Cage'];
 
-var topics = [Jessica Jones, Luke Cage, Stranger Things];
+function populateButtons(searchArray, classToAdd, areaToAddTo){
+  $(areaToAddTo).empty();
+  for(var i = 0; i < searchArray.length; i++){
+      var a = $("<button>");
+      a.addClass(classToAdd);
+      a.attr("data-type", searchArray[i]);
+      a.text(searchArray[i]);
+      $(areaToAddTo).append(a);
+  }
+}
 
-//event listener for all button elements
-$("#startButton").on("click", function() {
+$(document).on('click', '.searchButton', function(){
+  $('#searches').empty();
+  var type =$(this).data('type');
+  var queryURL ="http://api.giphy.com/v1/gifs/search?q="+type+ "&api_key=LSfJjOPXsgYc3Oy6QV7WHnGYlGQyZ7Jc"
+  $.ajax({
+      url: queryURL, 
+      method:'GET'
+  })
+  .done(function(response){
+      for(var i =0; i<response.data.length; i++){
+          var searchDiv =$('<div class="search-item">');
+          var rating = response.data[i].rating;
+          var p = $('<p>').text('Rating: '+rating);
+          var animated = response.data[i].images.fixed_height.url;
+          var still = response.data[i].images.fixed_height_still.url;
+          var images = $('<img>');
+          image.attr('src', still);
+          image.attr('data-still', still)
+          image.attr('data-animated', animated);
+          image.attr('data-state', 'still');
+          image.addClass('searchImage');
+          searchDiv.append(p);
+          searchDiv.append(image);
+          $('#searches').append(searchDiv);
+      }
+  })
+})
 
-    //in this case, the "this" keyword refers to the button that was clicked
-    var netflixShows = $(this).attr("#startButton");
+$(document).on("click", '.searchImage', function(){
+  var state = $(this).data('state');
+  if(state == 'still'){
+      $(this).attr('src', $(this).data('animated'));
+      $(this).attr('data-state', 'animated');
+  } else{
+      $(this).attr('src', $(this).data('still'));
+      $(this).attr('data-state', 'still');
+  }
+})
 
-    //constructing a URL to search Giphy of the name of the person who 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-      netflixShows + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-    //performing our AJAX GET request
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-
-    //after the data comes back from the API
-      .then(function(response) {
-
-        //storing an array of results in the results variable
-        var results = response.data;
-
-    //looping over every result item
-        for (var i = 0; i < results.length; i++) {
-          var gifDiv = $("<div class='item'>");
-
-          var rating = results[i].rating;
-
-          var p = $("<p>").text("Rating: " + rating);
-
-          var netflixShowsImage = $("<img>");
-          netflixShowsImage.attr("src", results[i].images.fixed_height.url);
-
-          gifDiv.prepend(p);
-          gifDiv.prepend(netflixShowsImage);
-
-          $("#gifs-appear-here").prepend(gifDiv);
-        }
-      });
-  });
+$('#addSearch').on('click', function(){
+var newSearch = $('input').eq(0).val();
+searchArray.push(newSearch);
+populateButtons(searchArray, 'searchButton', '#buttonArea');
+return false;
+})

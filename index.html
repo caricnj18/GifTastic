@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>GifTastic</title>
-    <link rel="stylesheet" href="assets/css/reset.css">
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -22,32 +22,15 @@
 		</div>
 	</header>
 
-    <!--title to direct user to input animal type-->
-    <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h4>
-                    <strong>Pick your favorite Netflix show</strong>
-                </h4>
-            </div>
-        </div>
+        <div id="buttonArea"></div>
 
-
-        <!--search bar-->
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="show name">
- 
-
-        <!-- Single button -->
-        <div class="panel panel-default">
-            <div id="startButton">
-                <div class="panel-body">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-                </div>
-            </div>
-        </div>
-    </div>
- </div>
+     <form id="search-form">
+        <label for ="search-input">Add in your seach</label>
+        <input type="text" id="search-input"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <div id="searches"></div>
 
  
     <!-- jQuery -->
